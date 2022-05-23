@@ -1,0 +1,19 @@
+#! /bin/bash
+
+KEYPATH=$HOME/Documents/Keys/
+KEYEXT=.key
+NULL=/dev/null
+COPY="xclip -sel clip"
+
+case $(printf "%s\n%s\n" "clear" "github" | dmenu) in
+        'github')
+                cat "$KEYPATH/github$KEYEXT" | $COPY
+                ;;
+        'clear')
+                $NULL | $COPY
+                ;;
+        *)
+                echo "Invalid"
+                ;;
+
+esac
