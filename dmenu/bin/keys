@@ -4,15 +4,34 @@ KEYPATH=$HOME/Documents/Keys/
 KEYEXT=.key
 NULL=/dev/null
 COPY="xclip -sel clip"
+FILE_ARRAY="create\nclear\n"
+UNAME=dcdenobrega@gmail.com
 
-case $(printf "%s\n%s\n" "clear" "github" | dmenu) in
-	'github')
-     cat "$KEYPATH/github$KEYEXT" | $COPY
-                ;;
-   'clear')
-     $NULL | $COPY
-                ;;
-    *)
-     echo "Invalid"
-      					;;
-esac
+function create_key(){
+		NEW=$(echo "Enter New Key Name" | dmenu)
+		PASSPHRASE=$(echo "Enter Your Master Password" | dmenu)
+		KEY=$(echo "Enter The New Key Value" | dmenu)
+		$(echo $KEY | gpg --batch --yes --no-tty -r $UNAME --passphrase $PASSPHRASE --encrypt --output $KEYPATH$NEW.gpg)
+}
+
+for file in $KEYPATH*; do
+		file="${file/$KEYPATH/""}"
+		file="${file/.gpg/""}"
+		FILE_ARRAY+="$file\n"
+done
+
+SELECTED=$(echo -e $FILE_ARRAY | dmenu)
+
+if [ $SELECTED == "clear" ]; then
+		$( $NULL | $COPY)
+
+elif [ $SELECTED == "create" ]; then
+		create_key
+
+else
+		PASSWORD=$(echo "Enter Passphrase" | dmenu)
+		KEY=$(gpg --batch --yes --passphrase $PASSWORD -d  "$KEYPATH$SELECTED.gpg")
+		echo -e $KEY | $COPY
+fi
+
+
