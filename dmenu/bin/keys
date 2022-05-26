@@ -4,7 +4,7 @@ KEYPATH=$HOME/Documents/Keys/
 KEYEXT=.key
 NULL=/dev/null
 COPY="xclip -sel clip"
-FILE_ARRAY="create\nclear\n"
+FILE_ARRAY="create\nclear\nremove\n"
 UNAME=dcdenobrega@gmail.com
 
 function create_key(){
@@ -12,6 +12,14 @@ function create_key(){
 		PASSPHRASE=$(echo "Enter Your Master Password" | dmenu)
 		KEY=$(echo "Enter The New Key Value" | dmenu)
 		$(echo $KEY | gpg --batch --yes --no-tty -r $UNAME --passphrase $PASSPHRASE --encrypt --output $KEYPATH$NEW.gpg)
+}
+
+function remove_key(){
+		local FILE_ARRAY=${FILE_ARRAY/"clear\n"}
+		local FILE_ARRAY=${FILE_ARRAY/"remove\n"}
+		local FILE_ARRAY=${FILE_ARRAY/"create\n"}
+		local REMOVE_KEYS=$(echo -e "${FILE_ARRAY}" | dmenu)
+		rm -v $KEYPATH$REMOVE_KEYS.gpg
 }
 
 for file in $KEYPATH*; do
@@ -27,6 +35,8 @@ if [ $SELECTED == "clear" ]; then
 
 elif [ $SELECTED == "create" ]; then
 		create_key
+elif [ $SELECTED == "remove" ]; then
+		remove_key
 
 else
 		PASSWORD=$(echo "Enter Passphrase" | dmenu)
