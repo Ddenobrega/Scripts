@@ -31,6 +31,6 @@ General Purpose scripts will be stored here
 
 #### Credits & Contact
 Daryl C. DeNobrega
-- <a href="https://ddenobrega.github.io/portfolio">Portfolio</a>
-- <a href="https://github.com/ddenobrega">Github</a>
-- <a href="malito://dcdenobrega@gmail.com">Email</a>
+- [My Website]("https://ddenobrega.github.io/")
+- [My Github]("https://github.com/ddenobrega")
+- dcdenobrega@gmail.com"
