@@ -28,9 +28,24 @@ Scripts in there utilize dmenu for execution.
 ### <a href="./bin">Bin</a>
 General Purpose scripts will be stored here
 
+#### [compile-kernel](./bin/compile-kernel)
+#### Dependencies
+- genkernel
+- glibc
+#### Standard Configuration
+- Compiles Kernel.
+	- 6 Jobs (12gb+ ram and at least six threads recommended).
+- Installs all the kernel modules.
+- Copies Kernel Binary to /boot directory.
+	- Make sure /boot is mounted.
+- Generates InitramFS.
+	- LVM support.
+  - Luks support.
+  - Zstd Compression.
+- Updates grub configuration in /boot.
+
 
 #### Credits & Contact
-Daryl C. DeNobrega
-- [My Website]("https://ddenobrega.github.io/")
+- [My Website]("https://ddenobrega.github.io")
 - [My Github]("https://github.com/ddenobrega")
 - dcdenobrega@gmail.com
