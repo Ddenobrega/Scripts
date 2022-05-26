@@ -33,4 +33,4 @@ General Purpose scripts will be stored here
 Daryl C. DeNobrega
 - [My Website]("https://ddenobrega.github.io/")
 - [My Github]("https://github.com/ddenobrega")
-- dcdenobrega@gmail.com"
+- dcdenobrega@gmail.com
