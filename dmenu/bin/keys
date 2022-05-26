@@ -40,7 +40,7 @@ elif [ $SELECTED == "remove" ]; then
 
 else
 		PASSWORD=$(echo "Enter Passphrase" | dmenu)
-		KEY=$(gpg --batch --yes --passphrase $PASSWORD -d  "$KEYPATH$SELECTED.gpg")
+		KEY=$(gpg --no-tty --batch --yes --passphrase $PASSWORD -d  "$KEYPATH$SELECTED.gpg")
 		echo -e $KEY | $COPY
 fi
 
