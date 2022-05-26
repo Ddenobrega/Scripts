@@ -6,14 +6,13 @@ NULL=/dev/null
 COPY="xclip -sel clip"
 
 case $(printf "%s\n%s\n" "clear" "github" | dmenu) in
-        'github')
-                cat "$KEYPATH/github$KEYEXT" | $COPY
+	'github')
+     cat "$KEYPATH/github$KEYEXT" | $COPY
                 ;;
-        'clear')
-                $NULL | $COPY
+   'clear')
+     $NULL | $COPY
                 ;;
-        *)
-                echo "Invalid"
-                ;;
-
+    *)
+     echo "Invalid"
+      					;;
 esac
