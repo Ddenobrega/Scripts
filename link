@@ -1,0 +1,14 @@
+#! /bin/bash
+BIN="$(echo $HOME)/.local/bin/"
+CURRENT_DIR="$(pwd)"
+DMENU_BIN="$CURRENT_DIR/dmenu/bin/"
+
+for script in "$(ls $CURRENT_DIR/bin/)"; do
+				ln -sf $CURRENT_DIR/bin/$script $BIN$script
+done
+
+for script in "$(ls $DMENU_BIN)"; do 
+				ln -sf $DMENU_BIN$script $BIN$script
+done
+
+
