@@ -11,7 +11,7 @@ The 'link' script automates symlinking binaries to user's binary folder [$HOME/.
 
 Scripts in there utilize dmenu for execution.
 
-- <a href="./dmenu/bin/keys">Keys</a> - Copies keys to xclip for simple encrypted password management.
+- <a href="./dmenu/bin/keys">Keys (BROKEN WIP)</a> - Copies keys to xclip for simple encrypted password management.
 #### Dependencies
 - dmenu
 - gnuGpg
