@@ -9,9 +9,8 @@ UNAME=dcdenobrega@gmail.com
 
 function create_key(){
 		NEW=$(echo "Enter New Key Name" | dmenu)
-		PASSPHRASE=$(echo "Enter Your Master Password" | dmenu)
 		KEY=$(echo "Enter The New Key Value" | dmenu)
-		$(echo $KEY | gpg --batch --yes --no-tty -r $UNAME --passphrase $PASSPHRASE --encrypt --output $KEYPATH$NEW.gpg)
+		$(echo $KEY | gpg --batch --yes --no-tty -r $UNAME --encrypt --output $KEYPATH$NEW.gpg)
 }
 
 function remove_key(){
@@ -39,8 +38,7 @@ elif [ $SELECTED == "remove" ]; then
 		remove_key
 
 else
-		PASSWORD=$(echo "Enter Passphrase" | dmenu)
-		KEY=$(gpg --passphrase $PASSWORD --batch --decrypt "$KEYPATH$SELECTED.gpg")
+		KEY=$(gpg --batch --decrypt "$KEYPATH$SELECTED.gpg")
 		echo -e $KEY | $COPY
 fi
 
